@@ -1,0 +1,79 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "webappname": {
+            "type": "string",
+            "metadata": {
+                "description": "Web app name"
+            }
+        },
+        "appServicePlanname": {
+            "type": "string",
+            "metadata": {
+                "description": "name of app service plan if already exists or desired name if creating a new one"
+            }
+        },
+        "linuxFxVersion": {
+            "type": "string",
+            "allowedValues": ["PYTHON|3.8", "DOTNETCORE|3.0", "NODE|10.15", "JAVA|1.8 |TOMCAT|9.0"],
+            "metadata": {
+                "description": "The Runtime stack for the app"
+            }
+        },
+        "skucode": {
+            "type": "string",
+            "allowedValues": ["P1v2", "P1v3", "P2v2"],
+            "metadata": {
+                "description": "The SKU of the App Service plan"
+            }
+        },
+        "skutier": {
+            "type": "string",
+            "allowedValues": ["PremiumV2"],
+            "metadata": {
+                "description": "The Tier of the App Service plan"
+            }
+        }
+    },
+    "functions": [],
+    "variables": {},
+    "resources": [
+        {
+            "name": "[parameters('webappname')]",
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2020-12-01",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanname'))]"
+            ],
+            "properties": {
+                "name": "[parameters('webappname')]",
+                "httpsOnly": true,
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanname'))]",
+                "siteConfig": {
+                    "ftpsState": "FtpsOnly",
+                    "alwaysOn": true,
+                    "linuxFxVersion": "[parameters('linuxFxVersion')]",
+                    "minTlsVersion": "1.2"
+                }
+            }
+        },
+        {
+            "name": "[parameters('appServicePlanname')]",
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2020-12-01",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "[parameters('skucode')]",
+                "tier": "[parameters('skutier')]"
+            },
+            "kind": "linux",
+            "properties": {
+                "name": "[parameters('appServicePlanname')]",
+                "reserved": true
+            }
+        }
+    ],
+    "outputs": {}
+}

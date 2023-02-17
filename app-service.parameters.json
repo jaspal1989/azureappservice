@@ -1,0 +1,21 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "webappname": {
+            "value": "pydemoapp"
+        },
+        "appServicePlanname": {
+            "value": "ghactionplan"
+        },
+        "linuxFxVersion": {
+            "value": "PYTHON|3.8"
+        },
+        "skucode": {
+            "value": "P1v2"
+        },
+        "skutier": {
+            "value": "PremiumV2"
+        }
+    }
+}
