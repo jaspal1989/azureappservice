@@ -3,13 +3,13 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "webappname": {
-            "value": "pydemoapp"
+            "value": "Dotnetcoredemoapp"
         },
         "appServicePlanname": {
             "value": "ghactionplan"
         },
         "linuxFxVersion": {
-            "value": "PYTHON|3.8"
+            "value": "DOTNETCORE|3.0"
         },
         "skucode": {
             "value": "P1v2"
