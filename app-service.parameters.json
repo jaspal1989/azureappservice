@@ -9,7 +9,7 @@
             "value": "ghactionplan"
         },
         "linuxFxVersion": {
-            "value": "DOTNETCORE|3.0"
+            "value": "JAVA|1.8"
         },
         "skucode": {
             "value": "P1v2"
