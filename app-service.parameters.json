@@ -12,10 +12,10 @@
             "value": "DOTNETCORE|3.0"
         },
         "skucode": {
-            "value": "P1v2"
+            "value": "F1"
         },
         "skutier": {
-            "value": "PremiumV2"
+            "value": "Free"
         }
     }
 }

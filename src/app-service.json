@@ -23,14 +23,14 @@
         },
         "skucode": {
             "type": "string",
-            "allowedValues": ["P1v2", "P1v3", "P2v2"],
+            "allowedValues": ["F1","P1v2", "P1v3", "P2v2"],
             "metadata": {
                 "description": "The SKU of the App Service plan"
             }
         },
         "skutier": {
             "type": "string",
-            "allowedValues": ["PremiumV2"],
+            "allowedValues": ["Free","PremiumV2"],
             "metadata": {
                 "description": "The Tier of the App Service plan"
             }
