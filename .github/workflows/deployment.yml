@@ -26,6 +26,7 @@ jobs:
           resourceGroupName: ${{ secrets.AZURE_RG }}
           template: ././src/app-service.json
           parameters: ././app-service.parameters.json
+          failOnStdErr: false
 
         # output containerName variable from template
       - run: echo ${{ steps.deploy.outputs.containerName }}
